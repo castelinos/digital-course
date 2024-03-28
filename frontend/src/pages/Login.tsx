@@ -23,7 +23,7 @@ const Login: React.FC = () => {
 
   async function loginUser(username: string, password: string) {
     try {
-      const response = await fetch('http://localhost:3001/login', {
+      const response = await fetch(`${import.meta.env.VITE_APP_API_URL}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
