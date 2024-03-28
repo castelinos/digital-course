@@ -1,0 +1,17 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-image: radial-gradient(circle at 84% 82%, rgba(137, 65, 0, 0.03) 0%, rgba(137, 65, 0, 0.03) 21%, transparent 21%, transparent 100%), radial-gradient(circle at 75% 56%, rgba(98, 47, 0, 0.01) 0%, rgba(98, 47, 0, 0.01) 30%, transparent 30%, transparent 100%), radial-gradient(circle at 74% 53%, rgba(137, 75, 0, 0.03) 0%, rgba(137, 75, 0, 0.03) 95%, transparent 95%, transparent 100%), radial-gradient(circle at 86% 43%, rgba(209, 209, 209, 0.03) 0%, rgba(209, 209, 209, 0.03) 83%, transparent 83%, transparent 100%), radial-gradient(circle at 64% 88%, rgba(232, 137, 17, 0.03) 0%, rgba(232, 137, 17, 0.03) 2%, transparent 2%, transparent 100%), radial-gradient(circle at 73% 77%, rgba(125, 62, 0, 0.03) 0%, rgba(125, 62, 0, 0.03) 18%, transparent 18%, transparent 100%), radial-gradient(circle at 57% 51%, rgba(100, 65, 0, 0.03) 0%, rgba(100, 65, 0, 0.03) 64%, transparent 64%, transparent 100%), radial-gradient(circle at 40% 84%, rgba(116, 67, 0, 0.03) 0%, rgba(116, 67, 0, 0.03) 14%, transparent 14%, transparent 100%), linear-gradient(90deg, rgb(0, 0, 0), rgb(0, 0, 0));
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  overflow-x: hidden;
+}
+
