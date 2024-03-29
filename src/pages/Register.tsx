@@ -23,7 +23,7 @@ const Register: React.FC = () => {
             console.log(username, password);
             
             
-            const response = await fetch(`https://female-dynamics-api.onrender.com:10000/register`, {
+            const response = await fetch(`https://female-dynamics-api.onrender.com/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

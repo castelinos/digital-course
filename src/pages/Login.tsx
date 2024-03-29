@@ -23,7 +23,7 @@ const Login: React.FC = () => {
 
   async function loginUser(username: string, password: string) {
     try {
-      const response = await fetch(`https://female-dynamics-api.onrender.com:10000/login`, {
+      const response = await fetch(`https://female-dynamics-api.onrender.com/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
