@@ -3,6 +3,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 
 import "../App.css"
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/context/AuthContext";
 
 interface NavBarProps {
   brandName: string;
@@ -12,6 +13,7 @@ interface NavBarProps {
 
 function NavBar({ brandName, imageSrcPath, navItems }: NavBarProps) {
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   const [selectedIndex, setSelectedIndex] = useState<Number>(-1);
   useEffect(() => {
@@ -69,7 +71,7 @@ function NavBar({ brandName, imageSrcPath, navItems }: NavBarProps) {
           </ul>
           <form className="d-flex me-3">
             <Avatar>
-              <AvatarFallback>email.ex@gmail.com</AvatarFallback>
+              <AvatarFallback>{user?.username}</AvatarFallback>
             </Avatar>
           </form>
         </div>

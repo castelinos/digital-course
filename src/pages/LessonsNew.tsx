@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../assets/css/lessons.css';
 import VideoPlayer from "@/components/VideoPlayer";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
-// import LockIcon from "../assets/lock-svgrepo-com.svg";
 
 interface Lesson {
     id: number;
@@ -189,7 +188,7 @@ const lessonsList: Lesson[] = [
         url: "/Videos/Album2/IMG_2875.mp4",
         isCurrentlyPlaying: false,
         preview: "/Videos/Album2/2875.jpg",
-        text: "קידום ממומן",
+        text: "בונוס - טירגוטים וקידום ממומן",
     },
 ];
 
@@ -248,7 +247,7 @@ const LessonsNew: React.FC = () => {
                             <VideoPlayer url={chosenLesson} />
                         </div>
                         <div className="coursesList">
-                            <h1 className="coursesListHeader">אלבום {chosenAlbum} - הקדמה</h1>
+                            <h1 className="coursesListHeader">אלבום {chosenAlbum}</h1>
                             <h1 className="coursesListSubHeader">שיעורים: {filteredLessonsByAlbum.length}</h1>
                             {renderedLessons}
                         </div>
@@ -256,7 +255,7 @@ const LessonsNew: React.FC = () => {
                     <div className="moveAlbum">
                         <h1 className="albumMoveHeader">עבור לאלבום אחר</h1>
                         <div className="moveAlbumHeader">
-                            <div className="albumMove" onClick={() => setChosenAlbum(3)}>
+                            <div className="albumMove" onClick={() => alert("תוכן בונוס")}>
                                 <div className="lockedAlbum">
                                     <img src={lessonsList[0].preview} alt="" className="albumItemImg" />
                                     <div className="lockedAlbumBackground">
