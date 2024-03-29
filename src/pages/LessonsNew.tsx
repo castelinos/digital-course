@@ -211,7 +211,7 @@ const LessonsNew: React.FC = () => {
     const [chosenAlbum, setChosenAlbum] = useState<number>(1);
     const [chosenLesson, setChosenLesson] = useState<string>(lessonsList[0].url);
     const [lessons, setLessons] = useState<Lesson[]>(lessonsList);
-    const [isMentorMenuOpen, setIsMentorMenuOpen] = useState<boolean>(false);
+    // const [isMentorMenuOpen, setIsMentorMenuOpen] = useState<boolean>(false);
 
     const handleLessonClick = (url: string, id: number) => {
         setChosenLesson(url);
@@ -250,21 +250,21 @@ const LessonsNew: React.FC = () => {
                 <div className="subCourseContainer">
                     <h1 className="topHeaderText">הצלחה עם נשים ברשתות חברתיות - באינסטגרם וטינדר</h1>
                     <div className="courseVideosConatiner">
-                        {isMentorMenuOpen ?
+                        {/* {isMentorMenuOpen ? */}
                             <div className="meetingContainer">
                                 <img src={MentorProfile} alt="" className="meetingImg" />
                                 <h1 className="meetingHeader">היי, כאן המנטור שלך</h1>
                                 <h1 className="meetingSubHeader">מוכן להתחיל?</h1>
                                 <h1 className="meetingText">מגיעה לך פגישת ייעוץ של כחצי שעה עם אחד מאנשי הצוות, לחץ כאץ כדי לקבוע אותה</h1>
                                 <Button variant="contained" color="warning" onClick={scheduleMetting}>!קבע פגישה</Button>
-                            </div> :
-                            <div className="meetingContainerNotOpened">
-                                <div className="meetingContainerContent" onClick={() => {setIsMentorMenuOpen(true)}}>
-                                    <img src={MentorProfile} alt="" className="meetingImg" />
-                                    <div className="notificationDot"></div>
-                                </div>
-                            </div>
-                        }
+                            </div> 
+                            {/* // <div className="meetingContainerNotOpened">
+                            //     <div className="meetingContainerContent" onClick={() => {setIsMentorMenuOpen(true)}}>
+                            //         <img src={MentorProfile} alt="" className="meetingImg" />
+                            //         <div className="notificationDot"></div>
+                            //     </div>
+                            // </div> */}
+                        
 
                         <div className="videoConatiner">
                             <VideoPlayer url={chosenLesson} />
