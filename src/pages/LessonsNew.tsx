@@ -239,6 +239,10 @@ const LessonsNew: React.FC = () => {
             )
     }), [lessons, chosenAlbum]);
 
+    const scheduleMetting = () => {
+        window.location.href = 'https://calendly.com/femaledynamics/30m';
+    };
+
     return (
         <>
             <NavBar {...navBarItems} />
@@ -252,7 +256,7 @@ const LessonsNew: React.FC = () => {
                                 <h1 className="meetingHeader">היי, כאן המנטור שלך</h1>
                                 <h1 className="meetingSubHeader">מוכן להתחיל?</h1>
                                 <h1 className="meetingText">מגיעה לך פגישת ייעוץ של כחצי שעה עם אחד מאנשי הצוות, לחץ כאץ כדי לקבוע אותה</h1>
-                                <Button variant="contained" color="warning">!קבע פגישה</Button>
+                                <Button variant="contained" color="warning" onClick={scheduleMetting}>!קבע פגישה</Button>
                             </div> :
                             <div className="meetingContainerNotOpened">
                                 <div className="meetingContainerContent" onClick={() => {setIsMentorMenuOpen(true)}}>
