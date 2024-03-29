@@ -23,7 +23,7 @@ const Register: React.FC = () => {
             console.log(username, password);
             
             
-            const response = await fetch(`${import.meta.env.VITE_APP_API_URL}/register`, {
+            const response = await fetch(`https://female-dynamics-api.onrender.com:5000/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
