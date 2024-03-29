@@ -4,7 +4,9 @@ import Logo from "../assets/animated.png";
 import 'bootstrap/dist/css/bootstrap.css';
 import '../assets/css/lessons.css';
 import VideoPlayer from "@/components/VideoPlayer";
+import MentorProfile from '@/assets/mentorProfile.jpg';
 import { useRequireAuth } from "@/hooks/useRequireAuth";
+import { Button } from "@mui/material";
 
 interface Lesson {
     id: number;
@@ -209,6 +211,7 @@ const LessonsNew: React.FC = () => {
     const [chosenAlbum, setChosenAlbum] = useState<number>(1);
     const [chosenLesson, setChosenLesson] = useState<string>(lessonsList[0].url);
     const [lessons, setLessons] = useState<Lesson[]>(lessonsList);
+    const [isMentorMenuOpen, setIsMentorMenuOpen] = useState<boolean>(false);
 
     const handleLessonClick = (url: string, id: number) => {
         setChosenLesson(url);
@@ -243,6 +246,22 @@ const LessonsNew: React.FC = () => {
                 <div className="subCourseContainer">
                     <h1 className="topHeaderText">הצלחה עם נשים ברשתות חברתיות - באינסטגרם וטינדר</h1>
                     <div className="courseVideosConatiner">
+                        {isMentorMenuOpen ?
+                            <div className="meetingContainer">
+                                <img src={MentorProfile} alt="" className="meetingImg" />
+                                <h1 className="meetingHeader">היי, כאן המנטור שלך</h1>
+                                <h1 className="meetingSubHeader">מוכן להתחיל?</h1>
+                                <h1 className="meetingText">מגיעה לך פגישת ייעוץ של כחצי שעה עם אחד מאנשי הצוות, לחץ כאץ כדי לקבוע אותה</h1>
+                                <Button variant="contained" color="warning">!קבע פגישה</Button>
+                            </div> :
+                            <div className="meetingContainerNotOpened">
+                                <div className="meetingContainerContent" onClick={() => {setIsMentorMenuOpen(true)}}>
+                                    <img src={MentorProfile} alt="" className="meetingImg" />
+                                    <div className="notificationDot"></div>
+                                </div>
+                            </div>
+                        }
+
                         <div className="videoConatiner">
                             <VideoPlayer url={chosenLesson} />
                         </div>
@@ -252,6 +271,7 @@ const LessonsNew: React.FC = () => {
                             {renderedLessons}
                         </div>
                     </div>
+                    <h1 className="trademarkText">כל הפצה או שימוש בסרטונים עלולה להיות כרוכה בהליכים משפטיים ,female-fynamics כל הזכויות שמורות לחברת</h1>
                     <div className="moveAlbum">
                         <h1 className="albumMoveHeader">עבור לאלבום אחר</h1>
                         <div className="moveAlbumHeader">

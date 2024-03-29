@@ -12,3 +12,17 @@
     border: 1px solid #ff8d41;
     /* border: 1px solid #ff8d4148; */
 }
+
+.loaderContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loaderText {
+    font-family: "Alef Hebrew", sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}

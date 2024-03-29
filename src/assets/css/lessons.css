@@ -377,7 +377,7 @@ body {
 }
 
 .moveAlbum {
-    margin-top: 5rem;
+    margin-top: 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -447,10 +447,102 @@ body {
 }
 
 
+.trademarkText {
+    font-family: "Alef Hebrew", sans-serif;
+    color: #AA8736;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
 
+.meetingContainer {
+    position: absolute;
+    left: 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+    border-radius: 10px;
+    max-width: 15vw;
+    padding: .2rem;
+    z-index: 1000;
+}
 
+.meetingContainerNotOpened {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 5vw;
+    border-radius: 10px;
+}
 
+.meetingContainerContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    max-width: 15vw;
+    padding: .2rem;
+    z-index: 1000;
 
+}
+
+.notificationDot {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: red;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+
+.meetingContainerExpand {
+    font-family: "Alef Hebrew", sans-serif;
+    color: #AA8736;
+    font-size: 1rem;
+}
+
+.meetingContainerExpand:hover {
+    cursor: pointer;
+    color: white;
+}
+
+.meetingHeader {
+    font-family: "Alef Hebrew", sans-serif;
+    color: #AA8736;
+    font-size: 2rem;
+}
+
+.meetingSubHeader {
+    font-family: "Alef Hebrew", sans-serif;
+    color: #757575;
+    font-size: 1rem;
+}
+
+.meetingText {
+    font-family: "Alef Hebrew", sans-serif;
+    color: #ffffff;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.meetingImg {
+    border-radius: 100%;
+    max-width: 3vw;
+    border: 2px solid #AA8736;
+}
+
+.meetingImg:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 250ms ease-in-out;
+    border: 2px solid #ffffff;
+}
 
 
 
