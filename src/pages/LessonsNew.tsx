@@ -338,7 +338,8 @@ const LessonsNew: React.FC = () => {
                             {renderedLessons}
                         </div>
                     </div>
-                    <h1 className="trademarkTextMobile">כל הפצה או שימוש בסרטונים עלולה להיות כרוכה בהליכים משפטיים ,female-fynamics כל הזכויות שמורות לחברת</h1>
+                    <h1 className="trademarkTextMobile">כל הזכויות שמורות לחברת female-dynamics</h1>
+                    <h1 className="trademarkTextMobile">כל הפצה או שימוש בסרטונים עלולה להיות כרוכה בהליכים משפטיים</h1>
                     <div className="moveAlbum">
                         <h1 className="albumMoveHeader">עבור לאלבום אחר</h1>
                         <div className="moveAlbumHeader">

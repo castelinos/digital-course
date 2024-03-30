@@ -77,13 +77,13 @@ const Home: React.FC = () => {
                                     המוצר הטוב ביותר לשליטה במשחק הפנימי שלך, היישום שלו בפועל וההעצמה שלו שישמשו אותך לכל החיים
                                 </div>
                                 <div className="headerButtons">
-                                    <Button variant="ghost" style={{ backgroundColor: '#33363A' }} onClick={() => { handleBtnClick(0) }}>קצת עלינו</Button>
-                                    <Button variant="ghost" style={{ backgroundColor: '#AA8736' }} onClick={() => { handleBtnClick(1) }}>מעבר לשיעורים</Button>
+                                    <Button variant="ghost" style={{ backgroundColor: '#33363A', color: 'white' }} onClick={() => { handleBtnClick(0) }}>קצת עלינו</Button>
+                                    <Button variant="ghost" style={{ backgroundColor: '#AA8736', color: 'white' }} onClick={() => { handleBtnClick(1) }}>מעבר לשיעורים</Button>
                                 </div>
                             </div>
                         </div>
                         <div className="videoConatinerHome">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/ItqsnD46gDQ?si=PWN0_KlJHzwBce7V" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" className="imgaeSlider"></iframe>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/ItqsnD46gDQ?si=PWN0_KlJHzwBce7V" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" className="imgaeSliderMobile"></iframe>
                         </div>
                         <div className="lowerHeader">
                             <div className="lowerHeaderText lowerTextMobile">
@@ -92,7 +92,7 @@ const Home: React.FC = () => {
                             <div className="lowerHeaderText lowerTextMobile">
                                 ?איך המשחק הפנימי נראה
                             </div>
-                            <div className="lowerHeaderTextColored lowerTextMobile">
+                            <div className="lowerHeaderTextColored lowerTextMobile" style={{ paddingBottom: '1rem'}}>
                                 זאת שאלה שבחיים לא תצטרך לשאול את עצמך יותר
                             </div>
                         </div>
