@@ -7,6 +7,7 @@ import VideoPlayer from "@/components/VideoPlayer";
 import MentorProfile from '@/assets/mentorProfile.jpg';
 import { useRequireAuth } from "@/hooks/useRequireAuth";
 import { Button } from "@mui/material";
+import { useResponsive } from "@/context/PlatformContext";
 
 interface Lesson {
     id: number;
@@ -211,6 +212,7 @@ const LessonsNew: React.FC = () => {
     const [chosenAlbum, setChosenAlbum] = useState<number>(1);
     const [chosenLesson, setChosenLesson] = useState<string>(lessonsList[0].url);
     const [lessons, setLessons] = useState<Lesson[]>(lessonsList);
+    const { isDesktopOrLaptop, isTabletOrMobile } = useResponsive();
     // const [isMentorMenuOpen, setIsMentorMenuOpen] = useState<boolean>(false);
 
     const handleLessonClick = (url: string, id: number) => {
@@ -245,6 +247,7 @@ const LessonsNew: React.FC = () => {
 
     return (
         <>
+        {isDesktopOrLaptop && <div>
             <NavBar {...navBarItems} />
             <div className="courseContainer">
                 <div className="subCourseContainer">
@@ -302,6 +305,69 @@ const LessonsNew: React.FC = () => {
                     </div>
                 </div>
             </div>
+            </div>}
+
+
+            {isTabletOrMobile && <>
+                <div className="courseContainer">
+                <div className="subCourseContainer">
+                    <h1 className="topHeaderText" style={{ textAlign: 'center'}}>הצלחה עם נשים ברשתות חברתיות - באינסטגרם וטינדר</h1>
+                    <div className="courseVideosConatinerMobile">
+                        {/* {isMentorMenuOpen ? */}
+                            {/* <div className="meetingContainer">
+                                <img src={MentorProfile} alt="" className="meetingImg" />
+                                <h1 className="meetingHeader">היי, כאן המנטור שלך</h1>
+                                <h1 className="meetingSubHeader">מוכן להתחיל?</h1>
+                                <h1 className="meetingText">מגיעה לך פגישת ייעוץ של כחצי שעה עם אחד מאנשי הצוות, לחץ כאץ כדי לקבוע אותה</h1>
+                                <Button variant="contained" color="warning" onClick={scheduleMetting}>!קבע פגישה</Button>
+                            </div>  */}
+                            {/* // <div className="meetingContainerNotOpened">
+                            //     <div className="meetingContainerContent" onClick={() => {setIsMentorMenuOpen(true)}}>
+                            //         <img src={MentorProfile} alt="" className="meetingImg" />
+                            //         <div className="notificationDot"></div>
+                            //     </div>
+                            // </div> */}
+                        
+
+                        <div className="videoConatinerMobile">
+                            <VideoPlayer url={chosenLesson} />
+                        </div>
+                        <div className="coursesListMobile">
+                            <h1 className="coursesListHeader">אלבום {chosenAlbum}</h1>
+                            <h1 className="coursesListSubHeader">שיעורים: {filteredLessonsByAlbum.length}</h1>
+                            {renderedLessons}
+                        </div>
+                    </div>
+                    <h1 className="trademarkTextMobile">כל הפצה או שימוש בסרטונים עלולה להיות כרוכה בהליכים משפטיים ,female-fynamics כל הזכויות שמורות לחברת</h1>
+                    <div className="moveAlbum">
+                        <h1 className="albumMoveHeader">עבור לאלבום אחר</h1>
+                        <div className="moveAlbumHeader">
+                            <div className="albumMove" onClick={() => alert("תוכן בונוס")}>
+                                <div className="lockedAlbum">
+                                    <img src={lessonsList[0].preview} alt="" className="albumItemImg" />
+                                    <div className="lockedAlbumBackground">
+                                        <svg className="lockIcon" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 2C9.79 2 8 3.79 8 6V8H6C4.9 8 4 8.9 4 10V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V10C20 8.9 19.1 8 18 8H16V6C16 3.79 14.21 2 12 2ZM10 6C10 4.9 10.9 4 12 4C13.1 4 14 4.9 14 6V8H10V6ZM6 10H18V20H6V10Z" fill="currentColor" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <h1 className="albumItemText">אלבום 3</h1>
+                            </div>
+                            <div className="albumMove" onClick={() => setChosenAlbum(2)}>
+                                <img src={lessonsList[1].preview} alt="" className="albumItemImg" />
+                                <h1 className="albumItemText">אלבום 2</h1>
+                            </div>
+                            <div className="albumMove" onClick={() => setChosenAlbum(1)}>
+                                <img src={lessonsList[2].preview} alt="" className="albumItemImg" />
+                                <h1 className="albumItemText">אלבום 1</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            </>}
+
         </>
     );
 };

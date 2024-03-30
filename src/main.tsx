@@ -11,11 +11,13 @@ import Login from './pages/Login.tsx'
 import LessonsNew from './pages/LessonsNew.tsx'
 import Home from './pages/Home.tsx';
 import Register from './pages/Register.tsx';
+import { ResponsiveProvider } from './context/PlatformContext.tsx';
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
+    <ResponsiveProvider>
       <AuthProvider>
         <Routes>
           <Route path="/" element={<Login />} />
@@ -38,6 +40,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           />
         </Routes>
       </AuthProvider>
+      </ResponsiveProvider>
     </BrowserRouter>
   </React.StrictMode>,
 )

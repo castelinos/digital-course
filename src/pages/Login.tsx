@@ -86,6 +86,12 @@ const Login: React.FC = () => {
                   value={email}
                   color="warning"
                   onChange={(e) => setEmail(e.target.value)}
+                  InputProps={{
+                    style: { 
+                      color: "#ff8d41",
+                      borderColor: "#ff8d41"
+                    },
+                  }}
                 />
 
                 <TextField
@@ -100,6 +106,12 @@ const Login: React.FC = () => {
                   color="warning"
                   onChange={(e) => {
                     setPassword(e.target.value);
+                  }}
+                  InputProps={{
+                    style: { 
+                      color: "#ff8d41",
+
+                    },
                   }}
                 />
 

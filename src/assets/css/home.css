@@ -3,6 +3,7 @@
 @import url(https://fonts.googleapis.com/earlyaccess/opensanshebrewcondensed.css);
 
 
+
 .containerFlex {
     display: flex;
     flex-direction: column;
@@ -11,11 +12,16 @@
     background-color: none;
 }
 
+
 .headerText {
     font-family: "Alef Hebrew", sans-serif;
     font-size: 3rem;
     font-weight: bold;
     margin-top: 1rem;
+}
+
+.headerTextMobile {
+    text-align: center;
 }
 
 .headerTextColored {
@@ -63,6 +69,10 @@
     font-size: 2rem;
     font-weight: bold;
     margin-top: 1rem;
+}
+
+.lowerTextMobile {
+    text-align: center;
 }
 
 .lowerHeaderTextColored {
