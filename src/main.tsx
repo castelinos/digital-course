@@ -10,7 +10,7 @@ import Login from './pages/Login.tsx'
 import Home from './pages/Home.tsx';
 import Register from './pages/Register.tsx';
 import { ResponsiveProvider } from './context/PlatformContext.tsx';
-import Lessons from './components/VideoGallery.tsx';
+import Lessons from './pages/Lessons.tsx';
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
