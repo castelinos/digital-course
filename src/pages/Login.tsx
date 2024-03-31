@@ -34,10 +34,16 @@ const Login: React.FC = () => {
         body: JSON.stringify(credentials),
       });
 
+      console.log("Post submitted");
+
       if (!response.ok) {
         const data = await response.json();
+        console.log(data.message);
         throw new Error(data.message || "An error occurred");
       }
+
+      console.log("User logged in successfully");
+      
 
       login(credentials.email, credentials.password);
       navigate('/home');
@@ -51,6 +57,8 @@ const Login: React.FC = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setCredentials(prev => ({ ...prev, [name]: value }));
+    console.log(credentials);
+    
   };
 
   return (
