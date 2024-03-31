@@ -7,11 +7,10 @@ import { AuthProvider } from './context/AuthContext.tsx';
 import ProtectedRoute from './components/ProtectedRoute';
 import ProtectedComponent from './components/ProtectedRoute.tsx'; // Assume this is the component you want to protect
 import Login from './pages/Login.tsx'
-
-import LessonsNew from './pages/LessonsNew.tsx'
 import Home from './pages/Home.tsx';
 import Register from './pages/Register.tsx';
 import { ResponsiveProvider } from './context/PlatformContext.tsx';
+import Lessons from './components/VideoGallery.tsx';
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -34,7 +33,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             path="/lessons"
             element={
               <ProtectedRoute>
-                <ProtectedComponent children={<LessonsNew />} />
+                <ProtectedComponent children={<Lessons />} />
               </ProtectedRoute>
             }
           />

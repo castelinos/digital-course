@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { LockOutlined } from "@mui/icons-material";
 import {
   Container,
@@ -10,135 +10,124 @@ import {
   Button,
   CircularProgress,
 } from "@mui/material";
-import { useState } from "react";
-import "../assets/css/login.css";
 import { useAuth } from "@/context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import '@/assets/css/login.css';
+
+interface Credentials {
+  email: string;
+  password: string;
+}
 
 const Login: React.FC = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [credentials, setCredentials] = useState<Credentials>({ email: "", password: "" });
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { login } = useAuth();
   const navigate = useNavigate();
 
-
-  async function loginUser(username: string, password: string) {
+  async function loginUser() {
+    setIsLoading(true);
     try {
-      setIsLoading(true);
-      const response = await fetch(`https://female-dynamics-api.onrender.com/login`, {
+      const response = await fetch(`${import.meta.env.VITE_APP_API_URL}/login`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(credentials),
       });
 
-      const data = await response.json();
-
       if (!response.ok) {
-        throw new Error(data.message);
+        const data = await response.json();
+        throw new Error(data.message || "An error occurred");
       }
 
-      login(username, password);
+      login(credentials.email, credentials.password);
       navigate('/home');
-    } catch (error: any) {
-      console.error('Error during login:', error.message);
-      setIsLoading(false);
+    } catch (error) {
+      alert(error);
     } finally {
       setIsLoading(false);
     }
   }
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setCredentials(prev => ({ ...prev, [name]: value }));
+  };
 
   return (
-    <>
-      <div className="loginContainer">
-        {isLoading ? (
-          <div className="loaderContainer">
-            <h1 className="loaderText">...רק עוד כמה רגעים</h1>
-            <CircularProgress />
-          </div>
-        ) : (
-          <Container maxWidth="xs" className="loginSubContainer">
-            <CssBaseline />
-            <Box
-              sx={{
-                mt: 10,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-            >
-              <Avatar sx={{ m: 1, bgcolor: "primary.light", backgroundColor: '#ff8d41' }}  >
-                <LockOutlined />
-              </Avatar>
-              <Typography variant="h5" sx={{ color: "white" }}>כניסה לחשבון</Typography>
-              <Box sx={{ mt: 1 }}>
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Username"
-                  name="email"
-                  autoFocus
-                  value={email}
-                  color="warning"
-                  onChange={(e) => setEmail(e.target.value)}
-                  InputProps={{
-                    style: { 
-                      color: "#ff8d41",
-                      borderColor: "#ff8d41"
-                    },
-                  }}
-                />
-
-                <TextField
-                  margin="normal"
-                  required
-                  fullWidth
-                  id="password"
-                  name="password"
-                  label="Password"
-                  type="password"
-                  value={password}
-                  color="warning"
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                  InputProps={{
-                    style: { 
-                      color: "#ff8d41",
-
-                    },
-                  }}
-                />
-
-                <Button
-                  fullWidth
-                  variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
-                  onClick={() => { loginUser(email, password) }}
-                  color="warning"
-                >
-                  התחבר
-                </Button>
-                {/* <Button
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              onClick={() => {registerUser("test", "test")}}
-            >
-              test
-            </Button> */}
-              </Box>
+    <div className="loginContainer">
+      {isLoading ? (
+        <div className="loaderContainer">
+          <Typography variant="h4" component="h1">...רק עוד כמה רגעים</Typography>
+          <CircularProgress />
+        </div>
+      ) : (
+        <Container maxWidth="xs" className="loginSubContainer">
+          <CssBaseline />
+          <Box sx={{
+            mt: 10,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}>
+            <Avatar sx={{ m: 1, bgcolor: "primary.light", backgroundColor: '#ff8d41' }}>
+              <LockOutlined />
+            </Avatar>
+            <Typography variant="h5" sx={{ color: "white" }}>כניסה לחשבון</Typography>
+            <Box component="form" sx={{ mt: 1 }} onSubmit={(e) => {
+              e.preventDefault();
+              loginUser();
+            }}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Username"
+                name="email"
+                autoFocus
+                value={credentials.email}
+                onChange={handleChange}
+                color="warning"
+                InputProps={{
+                  style: {
+                    color: "#ff8d41",
+                    borderColor: "#ff8d41"
+                  },
+                }}
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="password"
+                name="password"
+                label="Password"
+                type="password"
+                value={credentials.password}
+                onChange={handleChange}
+                color="warning"
+                InputProps={{
+                  style: {
+                    color: "#ff8d41",
+                    borderColor: "#ff8d41"
+                  },
+                }}
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                color="warning"
+              >
+                התחבר
+              </Button>
             </Box>
-          </Container>
-        )}
-      </div>
-    </>
-  )
-}
+          </Box>
+        </Container>
+      )}
+    </div>
+  );
+};
 
 export default Login;
