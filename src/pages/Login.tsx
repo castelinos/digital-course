@@ -15,12 +15,12 @@ import { useNavigate } from "react-router-dom";
 import '@/assets/css/login.css';
 
 interface Credentials {
-  email: string;
+  username: string;
   password: string;
 }
 
 const Login: React.FC = () => {
-  const [credentials, setCredentials] = useState<Credentials>({ email: "", password: "" });
+  const [credentials, setCredentials] = useState<Credentials>({ username: "", password: "" });
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ const Login: React.FC = () => {
       console.log("User logged in successfully");
       
 
-      login(credentials.email, credentials.password);
+      login(credentials.username, credentials.password);
       navigate('/home');
     } catch (error) {
       alert(error);
@@ -93,7 +93,7 @@ const Login: React.FC = () => {
                 label="Username"
                 name="email"
                 autoFocus
-                value={credentials.email}
+                value={credentials.username}
                 onChange={handleChange}
                 color="warning"
                 InputProps={{
