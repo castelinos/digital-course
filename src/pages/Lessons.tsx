@@ -309,8 +309,8 @@ const Lessons: React.FC = () => {
 
 
             {isTabletOrMobile && <>
-                <div className="courseContainer">
-                <div className="subCourseContainer">
+                <div className="courseContainerMobile">
+                <div className="subCourseContainerMobile">
                     <h1 className="topHeaderText" style={{ textAlign: 'center'}}>הצלחה עם נשים ברשתות חברתיות - באינסטגרם וטינדר</h1>
                     <div className="courseVideosConatinerMobile">
                         {/* {isMentorMenuOpen ? */}
@@ -338,8 +338,10 @@ const Lessons: React.FC = () => {
                             {renderedLessons}
                         </div>
                     </div>
+                    <hr />
                     <h1 className="trademarkTextMobile">כל הזכויות שמורות לחברת female-dynamics</h1>
                     <h1 className="trademarkTextMobile">כל הפצה או שימוש בסרטונים עלולה להיות כרוכה בהליכים משפטיים</h1>
+                    <hr />
                     <div className="moveAlbum">
                         <h1 className="albumMoveHeader">עבור לאלבום אחר</h1>
                         <div className="moveAlbumHeader">
