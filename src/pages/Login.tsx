@@ -57,8 +57,6 @@ const Login: React.FC = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setCredentials(prev => ({ ...prev, [name]: value }));
-    console.log(credentials);
-    
   };
 
   return (
@@ -89,9 +87,9 @@ const Login: React.FC = () => {
                 margin="normal"
                 required
                 fullWidth
-                id="email"
+                id="username"
                 label="Username"
-                name="email"
+                name="username"
                 autoFocus
                 value={credentials.username}
                 onChange={handleChange}
