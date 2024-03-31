@@ -242,7 +242,7 @@ const Lessons: React.FC = () => {
     }), [lessons, chosenAlbum]);
 
     const scheduleMetting = () => {
-        window.location.href = 'https://calendly.com/femaledynamics/30m';
+        window.location.href = 'https://calendly.com/d/cn54-33m-5sj/femaledynamics';
     };
 
     return (
