@@ -8,6 +8,7 @@ import MentorProfile from '@/assets/mentorProfile.jpg';
 import { useRequireAuth } from "@/hooks/useRequireAuth";
 import { Button } from "@mui/material";
 import { useResponsive } from "@/context/PlatformContext";
+import { useNavigate } from "react-router-dom";
 
 interface Lesson {
     id: number;
@@ -209,6 +210,7 @@ const navBarItems: NavBarItems = {
 
 const Lessons: React.FC = () => {
     useRequireAuth();
+    const navigate = useNavigate();
     const [chosenAlbum, setChosenAlbum] = useState<number>(1);
     const [chosenLesson, setChosenLesson] = useState<string>(lessonsList[0].url);
     const [lessons, setLessons] = useState<Lesson[]>(lessonsList);
@@ -282,7 +284,7 @@ const Lessons: React.FC = () => {
                     <div className="moveAlbum">
                         <h1 className="albumMoveHeader">עבור לאלבום אחר</h1>
                         <div className="moveAlbumHeader">
-                            <div className="albumMove" onClick={() => alert("תוכן בונוס")}>
+                            <div className="albumMove" onClick={() => {navigate("/bonus-content")}}>
                                 <div className="lockedAlbum">
                                     <img src={lessonsList[0].preview} alt="" className="albumItemImg" />
                                     <div className="lockedAlbumBackground">
@@ -345,7 +347,7 @@ const Lessons: React.FC = () => {
                     <div className="moveAlbum">
                         <h1 className="albumMoveHeader">עבור לאלבום אחר</h1>
                         <div className="moveAlbumHeader">
-                            <div className="albumMove" onClick={() => alert("תוכן בונוס")}>
+                            <div className="albumMove" onClick={() => {navigate("/bonus-content")}}>
                                 <div className="lockedAlbum">
                                     <img src={lessonsList[0].preview} alt="" className="albumItemImg" />
                                     <div className="lockedAlbumBackground">
