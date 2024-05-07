@@ -21,7 +21,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <AuthProvider>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/get-user" element={<Register />} />
           <Route
             path="/home"
             element={
