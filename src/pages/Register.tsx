@@ -8,18 +8,15 @@ import {
   Typography,
   TextField,
   Button,
-  Link,
 } from "@mui/material";
 import { useState } from "react";
 import "../assets/css/login.css";
 import { useNavigate } from "react-router-dom";
 
 const Register: React.FC = () => {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
 
   // async function checkConfirmation(confirmation: number) {
   //   try {
@@ -52,13 +49,8 @@ const Register: React.FC = () => {
   //   }
   // }
 
-
   async function registerUser(username: string, password: string) {
     try {
-
-      console.log("registering user");
-      console.log(username, password);
-
       const response = await fetch(
         `${import.meta.env.VITE_APP_API_URL}/register`,
         {
@@ -79,7 +71,7 @@ const Register: React.FC = () => {
       console.log(data.message);
       alert("משתמש נרשם בהצלחה");
 
-      navigate('/login');
+      navigate("/login");
     } catch (error) {
       console.error("Error during registration:", error);
     }
@@ -122,6 +114,7 @@ const Register: React.FC = () => {
               </Typography>
               <TextField
                 margin="normal"
+                sx={{ input: { color: "whitesmoke" } }}
                 required
                 fullWidth
                 id="email"
@@ -142,6 +135,7 @@ const Register: React.FC = () => {
               </Typography>
               <TextField
                 margin="normal"
+                sx={{ input: { color: "whitesmoke" } }}
                 required
                 fullWidth
                 id="password"
@@ -158,7 +152,7 @@ const Register: React.FC = () => {
               <Button
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 3, mb: 5 }}
                 onClick={() => {
                   registerUser(email, password);
                 }}
@@ -166,21 +160,6 @@ const Register: React.FC = () => {
                 !קבל גישה עכשיו
               </Button>
             </Box>
-            {/* Added typography */}
-            <Typography
-              sx={{ color: "white", fontSize: "14px", mt: 2, mb: 4 }}
-              variant="h4"
-              component="p"
-            >
-              Already have an account?
-              <Link
-                href="/login"
-                sx={{ fontSize: "14px", color: "orange", ml: 1 }}
-              >
-                Click here to Login
-              </Link>
-            </Typography>
-            {/* End */}
           </Box>
         </Container>
       </div>

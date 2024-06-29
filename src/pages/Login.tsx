@@ -9,7 +9,6 @@ import {
   TextField,
   Button,
   CircularProgress,
-  Link,
 } from "@mui/material";
 import { useAuth } from "@/context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -140,27 +139,12 @@ const Login: React.FC = () => {
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 3, mb: 5 }}
                 color="warning"
               >
                 התחבר
               </Button>
             </Box>
-            {/* Added typography */}
-            <Typography
-              sx={{ color: "white", fontSize: "14px", mt: 2, mb: 4 }}
-              variant="h4"
-              component="p"
-            >
-              Want to create a new account?
-              <Link
-                href="/get-user"
-                sx={{ fontSize: "14px", color: "orange", ml: 1 }}
-              >
-                Click here to Register
-              </Link>
-            </Typography>
-            {/* End */}
           </Box>
         </Container>
       )}
