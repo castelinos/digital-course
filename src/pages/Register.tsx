@@ -114,7 +114,6 @@ const Register: React.FC = () => {
               </Typography>
               <TextField
                 margin="normal"
-                sx={{ input: { color: "whitesmoke" } }}
                 required
                 fullWidth
                 id="email"
@@ -124,6 +123,12 @@ const Register: React.FC = () => {
                 autoFocus
                 value={email}
                 color="warning"
+                InputProps={{
+                  style: {
+                    color: "#ff8d41",
+                    borderColor: "#ff8d41",
+                  },
+                }}
                 onChange={(e) => setEmail(e.target.value)}
               />
 
@@ -135,7 +140,6 @@ const Register: React.FC = () => {
               </Typography>
               <TextField
                 margin="normal"
-                sx={{ input: { color: "whitesmoke" } }}
                 required
                 fullWidth
                 id="password"
@@ -144,6 +148,12 @@ const Register: React.FC = () => {
                 type="number"
                 value={password}
                 color="warning"
+                InputProps={{
+                  style: {
+                    color: "#ff8d41",
+                    borderColor: "#ff8d41",
+                  },
+                }}
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
