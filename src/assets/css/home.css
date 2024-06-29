@@ -1,0 +1,86 @@
+@import url(https://dl.dropboxusercontent.com/u/15746367/fonts/carmela/style.css);
+@import url(https://fonts.googleapis.com/earlyaccess/alefhebrew.css);
+@import url(https://fonts.googleapis.com/earlyaccess/opensanshebrewcondensed.css);
+
+
+
+.containerFlex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: none;
+}
+
+
+.headerText {
+    font-family: "Alef Hebrew", sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.headerTextMobile {
+    text-align: center;
+}
+
+.headerTextColored {
+    color: #986D0C;
+}
+
+.subHeaderText {
+    font-family: "Alef Hebrew", sans-serif;
+    font-size: 1.2rem;
+}
+
+.headerButtons {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.videoConatiner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.videoConatinerHome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+
+.lowerHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.lowerHeaderText {
+    font-family: "Alef Hebrew", sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.lowerTextMobile {
+    text-align: center;
+}
+
+.lowerHeaderTextColored {
+    font-family: "Alef Hebrew", sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+
+
