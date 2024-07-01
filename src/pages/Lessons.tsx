@@ -203,7 +203,7 @@ const lessonsList: Lesson[] = [
     title: "שיעור 1",
     url: "/Videos/Album3/IMG_2901.mp4",
     isCurrentlyPlaying: false,
-    preview: "/Videos/Album3/2875.jpg", //unedited
+    preview: "/Videos/Album3/2901.png",
     text: "מהודעה לפגישה חלק",
   },
   {
@@ -212,7 +212,7 @@ const lessonsList: Lesson[] = [
     title: "שיעור 2",
     url: "/Videos/Album3/IMG_2902.mp4",
     isCurrentlyPlaying: false,
-    preview: "/Videos/Album3/2875.jpg", //unedited
+    preview: "/Videos/Album3/2902.png",
     text: "תבנית הודעה חלק",
   },
   {
@@ -221,7 +221,7 @@ const lessonsList: Lesson[] = [
     title: "שיעור 3",
     url: "/Videos/Album3/IMG_2903.mp4",
     isCurrentlyPlaying: false,
-    preview: "/Videos/Album3/2875.jpg", //unedited
+    preview: "/Videos/Album3/2903.png",
     text: "תבנית הודעה חלק",
   },
   {
@@ -230,7 +230,7 @@ const lessonsList: Lesson[] = [
     title: "שיעור 4",
     url: "/Videos/Album3/IMG_2904.mp4",
     isCurrentlyPlaying: false,
-    preview: "/Videos/Album3/2875.jpg", //unedited
+    preview: "/Videos/Album3/2904.png",
     text: "תבנית הודעה חלק",
   },
   {
@@ -239,7 +239,7 @@ const lessonsList: Lesson[] = [
     title: "שיעור 5",
     url: "/Videos/Album3/IMG_2905.mp4",
     isCurrentlyPlaying: false,
-    preview: "/Videos/Album3/2875.jpg", //unedited
+    preview: "/Videos/Album3/2905.png",
     text: "דוגמא מהפרופיל המושלם חלק",
   },
   {
@@ -248,7 +248,7 @@ const lessonsList: Lesson[] = [
     title: "שיעור 6",
     url: "/Videos/Album3/IMG_2906.mp4",
     isCurrentlyPlaying: false,
-    preview: "/Videos/Album3/2875.jpg", //unedited
+    preview: "/Videos/Album3/2906.png",
     text: "דוגמא מהודעות עם נשים חלק",
   },
   {
@@ -257,7 +257,7 @@ const lessonsList: Lesson[] = [
     title: "שיעור 7",
     url: "/Videos/Album3/IMG_2907.mp4",
     isCurrentlyPlaying: false,
-    preview: "/Videos/Album3/2875.jpg", //unedited
+    preview: "/Videos/Album3/2907.png",
     text: "הסבר סיום קורס חלק",
   },
   {
@@ -266,7 +266,7 @@ const lessonsList: Lesson[] = [
     title: "שיעור 8",
     url: "/Videos/Album3/IMG_2908.mp4",
     isCurrentlyPlaying: false,
-    preview: "/Videos/Album3/2875.jpg", //unedited
+    preview: "/Videos/Album3/2908.png",
     text: "איך לחיות כמו דן בלזיריאן בונוס",
   },
   {
@@ -275,7 +275,7 @@ const lessonsList: Lesson[] = [
     title: "שיעור 9",
     url: "/Videos/Album3/IMG_2909.mp4",
     isCurrentlyPlaying: false,
-    preview: "/Videos/Album3/2875.jpg", //unedited
+    preview: "/Videos/Album3/2909.png",
     text: "לצאת לבד בונוס",
   },
   {
@@ -284,7 +284,7 @@ const lessonsList: Lesson[] = [
     title: "שיעור 10",
     url: "/Videos/Album3/IMG_2910.mp4",
     isCurrentlyPlaying: false,
-    preview: "/Videos/Album3/2875.jpg", //unedited
+    preview: "/Videos/Album3/2910.png",
     text: "פסיכולוגיה נשית בונוס",
   },
 ];
