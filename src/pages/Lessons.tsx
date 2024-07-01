@@ -10,7 +10,7 @@ import { Button } from "@mui/material";
 import { useResponsive } from "@/context/PlatformContext";
 import { useNavigate } from "react-router-dom";
 
-const purchase = { addon: true };
+const purchase = { addon: false };
 
 interface Lesson {
   id: number;
