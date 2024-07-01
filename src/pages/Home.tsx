@@ -10,9 +10,8 @@ import { useRequireAuth } from "@/hooks/useRequireAuth";
 import { useResponsive } from "@/context/PlatformContext";
 
 
-
 const Home: React.FC = () => {
-    let items = ["עמוד הבית", "שיעורים", "קצת עלינו"];
+    const items = ["עמוד הבית", "שיעורים", "קצת עלינו"];
     const navigate = useNavigate();
     useRequireAuth();
     const { isDesktopOrLaptop, isTabletOrMobile } = useResponsive();
@@ -26,7 +25,7 @@ const Home: React.FC = () => {
             case 1:
                 navigate("/lessons");
                 break;
-        };
+        }
     };
 
     return (

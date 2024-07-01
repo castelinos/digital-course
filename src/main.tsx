@@ -11,6 +11,7 @@ import Register from "./pages/Register.tsx";
 import { ResponsiveProvider } from "./context/PlatformContext.tsx";
 import Lessons from "./pages/Lessons.tsx";
 import BonusContent from "./pages/BonusContent.tsx";
+import OrderSuccess from "./pages/OrderSuccess.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -55,6 +56,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                 </ProtectedRoute>
               }
             />
+            <Route path="/order-success" element={<OrderSuccess/>} />
           </Routes>
         </AuthProvider>
       </ResponsiveProvider>
