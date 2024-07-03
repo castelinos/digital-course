@@ -1,5 +1,9 @@
+interface LoginAPIProps{
+    username:string;
+    password:string;
+}
 
-export async function getCustomerData(customerID: string) {
+export async function getCustomerData( customerID: string ) {
     try {
         const response = await fetch(
         `${import.meta.env.VITE_SUMIT_API_URL}/crm/data/getentity/`,
@@ -15,22 +19,72 @@ export async function getCustomerData(customerID: string) {
             IncludeIncomingProperties: false,
             IncludeFields: true,
             }),
-        }
-        );
+        });
 
         const data = await response.json();
 
-        if (!response.ok) {
-            throw new Error(data.message || "An error occurred");
+        if (response.ok) {
+            return { status: "success", data: data.Data.Entity };
         } 
         else {
-            console.log("Request success!");
-            console.log(data);
-            return({ status:"success",data:data });
+            throw new Error(data.message || "An error occurred");
         }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
         console.log('Error fetching customer details',error);
-        return({status:'error',message:error.message})
+        return({status:'error', message:error.message})
+    }
+}
+
+export async function loginUser({ username, password }:LoginAPIProps) {
+   try {
+        const response = await fetch(`${import.meta.env.VITE_APP_API_URL}/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password }),
+        });
+
+    const data = await response.json();
+
+    if (response.ok) {
+        return ({status:"success", message:data.message });
+    }
+    else{
+        console.log(data.message);
+        throw new Error(data.message || "An error occurred");
+    }
+    
+   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   } catch ( error:any ) {
+        console.log('Error in login API request',error.message);
+        return({status:"error", message: error.message});
+   }
+ }
+
+export async function registerUser(username: string, password: string) {
+    try {
+        const response = await fetch(
+        `${import.meta.env.VITE_APP_API_URL}/register`,
+        {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ username, password }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            return({status:"success",message:data.message});
+        }
+        else{
+            throw new Error(data.message);
+        }
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+        console.error("Error during registration:", error);
+        return({status:"error", message: error.message})
     }
 }
