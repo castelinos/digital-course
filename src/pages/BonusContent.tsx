@@ -9,23 +9,41 @@ const BonusContent: React.FC = () => {
 
 
     return (
-        <div style={{ width: '100vw', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div>
+          <div>
             <div>
-                <div>
-                    <div>
-                        <div className="card">
-                            <div className="card-body" style={{ display: 'flex', flexDirection: 'column', alignContent: 'center', justifyContent: 'center'}}>
-                                <h1 style={{ textAlign: 'center'}}>תוכן בונוס</h1>
-                                <p>
-                                    תוכן זה אינו חלק מהקורס, על מנת להמשיך לצפות
-                                </p>
-                                <button>לחץ כאן</button>
-                            </div>
-                        </div>
-                    </div>
+              <div className="card">
+                <div
+                  className="card-body"
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignContent: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <h1 style={{ textAlign: "center" }}>תוכן בונוס</h1>
+                  <p style={{ maxWidth: 400}}>
+                    איך להתכתב עם נשים עד הפגישה , איך לבנות את הפרופיל המושלם ,
+                    הורדה של כל קבצי הסטורים , ובונוסים של הרצאות והדרכות שלי על
+                    מה לעשות בדייט
+                  </p>
+                  <button>לחץ כאן To קנה עכשיו !</button>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     );
 };
 
