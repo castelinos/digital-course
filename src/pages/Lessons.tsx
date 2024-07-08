@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import NavBar from "@/components/navbar";
 import Logo from "../assets/animated.png";
 import "bootstrap/dist/css/bootstrap.css";
@@ -9,8 +9,8 @@ import { useRequireAuth } from "@/hooks/useRequireAuth";
 import { Button } from "@mui/material";
 import { useResponsive } from "@/context/PlatformContext";
 import { useNavigate } from "react-router-dom";
-
-const purchase = { addon: false };
+import { getUserOrders } from "@/lib/apis";
+import { useAuth } from "@/context/AuthContext";
 
 interface Lesson {
   id: number;
@@ -308,7 +308,24 @@ const Lessons: React.FC = () => {
   const [chosenLesson, setChosenLesson] = useState<string>(lessonsList[0].url);
   const [lessons, setLessons] = useState<Lesson[]>(lessonsList);
   const { isDesktopOrLaptop, isTabletOrMobile } = useResponsive();
+  const [orders,setOrders] = useState([{orderName:'',createdAt:null}]);
+  const { user } = useAuth();
   // const [isMentorMenuOpen, setIsMentorMenuOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    if( user && user['username'] ){
+      handleOrderData(user['username']);
+    }
+  }, []);
+
+  const showBonus = orders.find((val) => val.orderName === "BONUS_CONTENT");
+
+  async function handleOrderData( email: string ){
+    const result = await getUserOrders(email);
+    if( result.status === "success"){
+      setOrders(result.data);
+    }
+  }
 
   const handleLessonClick = (url: string, id: number) => {
     setChosenLesson(url);
@@ -404,7 +421,7 @@ const Lessons: React.FC = () => {
               <div className="moveAlbum">
                 <h1 className="albumMoveHeader">עבור לאלבום אחר</h1>
                 <div className="moveAlbumHeader">
-                  { !purchase.addon ? (
+                  {!showBonus ? (
                     <div
                       className="albumMove"
                       onClick={() => {
@@ -516,7 +533,7 @@ const Lessons: React.FC = () => {
               <div className="moveAlbum">
                 <h1 className="albumMoveHeader">עבור לאלבום אחר</h1>
                 <div className="moveAlbumHeader">
-                  { !purchase.addon ? (
+                  { !showBonus ? (
                     <div
                       className="albumMove"
                       onClick={() => {
