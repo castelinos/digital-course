@@ -1,4 +1,4 @@
-import { getCustomerData, registerUser } from "@/lib/apis";
+import { createOrder, getCustomerData, registerUser } from "@/lib/apis";
 import { CheckCircle, ErrorOutline } from "@mui/icons-material";
 import {
   Avatar,
@@ -11,39 +11,68 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import "@/assets/css/orders.css";
+import { useParams } from "react-router-dom";
+import { ordersList } from "@/lib/constants";
+
+interface userOrder {
+  id:string;
+  orderName:string;
+}
 
 const OrderSuccess: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [details,setDetails]=useState({status:"error",message:"Bad Request"});
+  const { order } = useParams();
+
   const params = new URL(window.location.href).searchParams;
   const customerID = params.get("OG-CustomerID");
+  const paymentID = params.get("OG-PaymentID");
+
+  const userOrder = ( order ) ? Object.values(ordersList).find( val => val.id === order ) : null;
 
   useEffect(() => {
-
-    if ( !customerID ) {
+    if ( !customerID || !userOrder || !paymentID ) {
       alert("נתוני בקשה שגויים");
       return;
     }
-    processOrderInformation(customerID)
+    processOrderInformation(customerID, paymentID, userOrder);
 
     return () => {};
   }, []);
 
-  async function processOrderInformation(customerID: string) {
+  async function processOrderInformation( customerID: string, paymentID:string, order:userOrder ) {
     try {
       setIsLoading(true);
-      if (!customerID) throw new Error("נתוני בקשה שגויים");
+      if ( !customerID || !order ) throw new Error("נתוני בקשה שגויים");
+      const { id, orderName } = order;
+
       let result = await getCustomerData(customerID);
       setDetails({ status: result.status, message: "האימות הצליח" });
 
       if (result.status !== "success") throw new Error("לא ניתן היה לאמת את התשלום");
-      const { Customers_EmailAddress: emails } = result.data;
+      const {
+        Customers_EmailAddress: emails,
+        Customers_FullName: names,
+        Customers_Phone: contacts
+      } = result.data;
 
       const email = emails[0];
       if (!email) throw new Error("לא נמצא אימייל");
 
-      result = await registerUser(email, "GENERATE_PASSWORD");
-      if (result.status !== "success") throw new Error("רישום המשתמש נכשל");
+      if( orderName === 'BASIC' ){
+        result = await registerUser(email, "GENERATE_PASSWORD");
+        if (result.status !== "success") throw new Error("רישום המשתמש נכשל");
+        setDetails(result);
+      }
+
+      result = await createOrder({
+        email: email,
+        orderID: id,
+        customerID: customerID,
+        paymentID: paymentID,
+        contact:contacts[0],
+        name:names[0]
+      });
 
       setDetails(result);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -61,12 +90,29 @@ const OrderSuccess: React.FC = () => {
       <Container maxWidth="xs" className="orderSubContainer">
         <CssBaseline />
         <Box
+          component="form"
           sx={{
             mt: 2,
             py: 5,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+          }}
+          onSubmit={(event) => {
+            event.preventDefault();
+
+            const orderName = ( userOrder && userOrder['orderName'] ) ? userOrder['orderName'] : 'default'
+            switch( orderName ){
+              case 'BASIC':
+                window.location.replace(import.meta.env.VITE_LANDING_PAGE_URL);
+                break;
+              case 'BONUS_CONTENT':
+                window.location.replace(`${import.meta.env.VITE_COURSE_APP_URL}/login`);
+                break;
+              default:
+                window.location.replace(import.meta.env.VITE_LANDING_PAGE_URL);
+            }
+            
           }}
         >
           {isLoading ? (
