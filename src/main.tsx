@@ -56,7 +56,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                 </ProtectedRoute>
               }
             />
-            <Route path="/order-success" element={<OrderSuccess/>} />
+            <Route path="/:order/order-success" element={<OrderSuccess />} />
           </Routes>
         </AuthProvider>
       </ResponsiveProvider>
