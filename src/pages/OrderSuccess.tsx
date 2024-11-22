@@ -104,7 +104,10 @@ const OrderSuccess: React.FC = () => {
             const orderName = ( userOrder && userOrder['orderName'] ) ? userOrder['orderName'] : 'default'
             switch( orderName ){
               case 'BASIC':
-                window.location.replace(import.meta.env.VITE_LANDING_PAGE_URL);
+                window.location.replace(
+                  import.meta.env.VITE_LANDING_PAGE_URL +
+                    "?show_promotion=bonus_content"
+                );
                 break;
               case 'BONUS_CONTENT':
                 window.location.replace(`${import.meta.env.VITE_COURSE_APP_URL}/login`);
