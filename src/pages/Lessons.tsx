@@ -246,7 +246,7 @@ const Lessons: React.FC = () => {
                     <div
                       className="albumMove"
                       onClick={() => {
-                        navigate("/bonus-content");
+                        toggleShowModal(true)
                       }}
                     >
                       <div className="lockedAlbum">
@@ -309,7 +309,7 @@ const Lessons: React.FC = () => {
       )}
 
       {/* Bonus Content Modal */ }
-      <Modal showModal={showModal} toggleShowModal={toggleShowModal} >
+      <Modal showModal={showModal} toggleShowModal={toggleShowModal} backgroundTheme="light">
         <h1 style={{ textAlign: "center" }}>תוכן בונוס </h1>
         <p dir="auto" style={{ maxWidth: 400, textAlign: "justify" }}>
           איך להתכתב עם נשים עד הפגישה , איך לבנות את הפרופיל המושלם ,
