@@ -8,7 +8,6 @@ import MentorProfile from "@/assets/mentorProfile.jpg";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
 import { Button } from "@mui/material";
 import { useResponsive } from "@/context/PlatformContext";
-import { useNavigate } from "react-router-dom";
 import { getUserOrders } from "@/lib/apis";
 import { useAuth } from "@/context/AuthContext";
 
@@ -33,7 +32,6 @@ function getAlbumName( id: number ){
 
 const Lessons: React.FC = () => {
   useRequireAuth();
-  const navigate = useNavigate();
   const [chosenAlbum, setChosenAlbum] = useState<number>(1);
   const [chosenLesson, setChosenLesson] = useState<string>(lessonsList[getAlbumName(chosenAlbum)][0].url);
   const { isDesktopOrLaptop, isTabletOrMobile } = useResponsive();
