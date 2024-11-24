@@ -78,6 +78,11 @@ const OrderSuccess: React.FC = () => {
       });
 
       setDetails(result);
+
+      if( result.status === 'success' ){
+        setTimeout(()=> setShowAd(true),1000);
+      }
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error:any) {
       console.log("Error in order processing", error);
@@ -85,7 +90,6 @@ const OrderSuccess: React.FC = () => {
     }
     finally{
       setIsLoading(false);
-      setShowAd(true); 
     }
   }
 
@@ -213,7 +217,6 @@ const OrderSuccess: React.FC = () => {
               url={["/Videos/bonus-content-promo.mp4","/Vidoes/bonus-content-promo.mkv"]} 
               playing
               controls
-              autoPlay
               muted
               width='100%'
               height='100%'
@@ -227,7 +230,7 @@ const OrderSuccess: React.FC = () => {
 					<div className="modal-footer justify-content-center pb-4 border-top border-white">
 						<button type="button" data-bs-dismiss="modal"
 							onClick={()=>{ 
-                /*  Redirect to pro purchase page */
+                window.location.href = import.meta.env.VITE_BONUS_CONTENT_PAY_URL;
               }}
 							className="btn btn-warning fs-3 mt-4 align-middle">תקנה את זה עכשיו</button>
 					</div>
