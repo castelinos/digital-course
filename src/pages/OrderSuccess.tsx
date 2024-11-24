@@ -79,7 +79,7 @@ const OrderSuccess: React.FC = () => {
 
       setDetails(result);
 
-      if( result.status === 'success' ){
+      if( orderName === 'BASIC' && result.status === 'success' ){
         setTimeout(()=> setShowAd(true),1000);
       }
 
@@ -110,18 +110,12 @@ const OrderSuccess: React.FC = () => {
             event.preventDefault();
 
             const orderName = ( userOrder && userOrder['orderName'] ) ? userOrder['orderName'] : 'default'
-            switch( orderName ){
-              case 'BASIC':
-                window.location.replace(
-                  import.meta.env.VITE_LANDING_PAGE_URL +
-                    "?show_promotion=bonus_content"
-                );
-                break;
-              case 'BONUS_CONTENT':
-                window.location.replace(`${import.meta.env.VITE_COURSE_APP_URL}/login`);
-                break;
-              default:
-                window.location.replace(import.meta.env.VITE_LANDING_PAGE_URL);
+            
+            if( orderName === "BONUS_CONTENT" ){
+              window.location.replace(`${import.meta.env.VITE_COURSE_APP_URL}/login`);
+            }
+            else{
+              window.location.replace( import.meta.env.VITE_LANDING_PAGE_URL );
             }
             
           }}
