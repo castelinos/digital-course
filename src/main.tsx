@@ -10,7 +10,6 @@ import Home from "./pages/Home.tsx";
 import Register from "./pages/Register.tsx";
 import { ResponsiveProvider } from "./context/PlatformContext.tsx";
 import Lessons from "./pages/Lessons.tsx";
-import BonusContent from "./pages/BonusContent.tsx";
 import OrderSuccess from "./pages/OrderSuccess.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
@@ -45,14 +44,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
               element={
                 <ProtectedRoute level="user">
                   <Lessons />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/bonus-content"
-              element={
-                <ProtectedRoute level="user">
-                  <BonusContent />
                 </ProtectedRoute>
               }
             />
