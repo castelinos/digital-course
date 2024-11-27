@@ -13,6 +13,8 @@ import React, { useEffect, useState } from "react";
 import "@/assets/css/orders.css";
 import { useParams } from "react-router-dom";
 import { ordersList } from "@/lib/constants";
+import Modal from "@/components/Modal";
+import ReactPlayer from "react-player";
 
 interface userOrder {
   id:string;
@@ -29,6 +31,7 @@ const OrderSuccess: React.FC = () => {
   const paymentID = params.get("OG-PaymentID");
 
   const userOrder = ( order ) ? Object.values(ordersList).find( val => val.id === order ) : null;
+  const [showAd, setShowAd] = useState(false); 
 
   useEffect(() => {
     if ( !customerID || !userOrder || !paymentID ) {
@@ -75,6 +78,11 @@ const OrderSuccess: React.FC = () => {
       });
 
       setDetails(result);
+
+      if( orderName === 'BASIC' && result.status === 'success' ){
+        setTimeout(()=> setShowAd(true),1000);
+      }
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error:any) {
       console.log("Error in order processing", error);
@@ -102,18 +110,12 @@ const OrderSuccess: React.FC = () => {
             event.preventDefault();
 
             const orderName = ( userOrder && userOrder['orderName'] ) ? userOrder['orderName'] : 'default'
-            switch( orderName ){
-              case 'BASIC':
-                window.location.replace(
-                  import.meta.env.VITE_LANDING_PAGE_URL +
-                    "?show_promotion=bonus_content"
-                );
-                break;
-              case 'BONUS_CONTENT':
-                window.location.replace(`${import.meta.env.VITE_COURSE_APP_URL}/login`);
-                break;
-              default:
-                window.location.replace(import.meta.env.VITE_LANDING_PAGE_URL);
+            
+            if( orderName === "BONUS_CONTENT" ){
+              window.location.replace(`${import.meta.env.VITE_COURSE_APP_URL}/login`);
+            }
+            else{
+              window.location.replace( import.meta.env.VITE_LANDING_PAGE_URL );
             }
             
           }}
@@ -195,6 +197,40 @@ const OrderSuccess: React.FC = () => {
           )}
         </Box>
       </Container>
+
+      { 
+        <Modal showModal={showAd} toggleShowModal={setShowAd} backgroundTheme="dark">
+          <div className="modal-content p-0">
+					<div className="modal-header border-bottom border-white">
+						<h3 className="modal-title text-center flex-grow-1 fs-3 mb-2">זאת הצעה חד פעמית
+							שלא תחזור יותר</h3>
+					</div>
+
+					<div className="modal-body p-4">
+            <ReactPlayer 
+              url={["/Videos/bonus-content-promo.mp4","/Vidoes/bonus-content-promo.mkv"]} 
+              playing
+              controls
+              muted
+              width='100%'
+              height='100%'
+              />
+						<div className="text-center fs-4">
+							זוהי הדרך המהירה ביותר להגיע מההתכתבות לדייט ולהפוך את התהליך הזה של
+							לצאת עם דוגמניות מהאינסטגרם למשהו פשוט ואוטומטי אל תוותר על עצמך
+						</div>
+					</div>
+
+					<div className="modal-footer justify-content-center pb-4 border-top border-white">
+						<button type="button" data-bs-dismiss="modal"
+							onClick={()=>{ 
+                window.location.href = import.meta.env.VITE_BONUS_CONTENT_PAY_URL;
+              }}
+							className="btn btn-warning fs-3 mt-4 align-middle">תקנה את זה עכשיו</button>
+					</div>
+				</div>
+        </Modal>
+      }
     </div>
   );
 };

@@ -8,11 +8,11 @@ import MentorProfile from "@/assets/mentorProfile.jpg";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
 import { Button } from "@mui/material";
 import { useResponsive } from "@/context/PlatformContext";
-import { useNavigate } from "react-router-dom";
 import { getUserOrders } from "@/lib/apis";
 import { useAuth } from "@/context/AuthContext";
 
 import lessonsList from "@/data/lesson";
+import Modal from "@/components/Modal";
 
 interface NavBarItems {
   brandName: string;
@@ -32,12 +32,12 @@ function getAlbumName( id: number ){
 
 const Lessons: React.FC = () => {
   useRequireAuth();
-  const navigate = useNavigate();
   const [chosenAlbum, setChosenAlbum] = useState<number>(1);
   const [chosenLesson, setChosenLesson] = useState<string>(lessonsList[getAlbumName(chosenAlbum)][0].url);
   const { isDesktopOrLaptop, isTabletOrMobile } = useResponsive();
   const [orders,setOrders] = useState([{orderName:'',createdAt:null}]);
   const { user } = useAuth();
+  const [showModal, toggleShowModal] = useState(false);
   // const [isMentorMenuOpen, setIsMentorMenuOpen] = useState<boolean>(false);
 
   useEffect(() => {
@@ -144,9 +144,7 @@ const Lessons: React.FC = () => {
                   {!showBonus ? (
                     <div
                       className="albumMove"
-                      onClick={() => {
-                        navigate("/bonus-content");
-                      }}
+                      onClick={() => { toggleShowModal(true); }}
                     >
                       <div className="lockedAlbum">
                         <img
@@ -246,7 +244,7 @@ const Lessons: React.FC = () => {
                     <div
                       className="albumMove"
                       onClick={() => {
-                        navigate("/bonus-content");
+                        toggleShowModal(true)
                       }}
                     >
                       <div className="lockedAlbum">
@@ -307,6 +305,28 @@ const Lessons: React.FC = () => {
           </div>
         </>
       )}
+
+      {/* Bonus Content Modal */ }
+      <Modal showModal={showModal} toggleShowModal={toggleShowModal} backgroundTheme="light">
+        <h1 style={{ textAlign: "center" }}>תוכן בונוס </h1>
+        <p dir="auto" style={{ maxWidth: 400, textAlign: "justify" }}>
+          איך להתכתב עם נשים עד הפגישה , איך לבנות את הפרופיל המושלם ,
+          הורדה של כל קבצי הסטורים , ובונוסים של הרצאות והדרכות שלי על
+          מה לעשות בדייט
+          <p style={{ color: "red", fontWeight: "bold" }}>
+            שים לב בתשלום להשתמש באותו אמייל שרכשת את הקורס
+          </p>
+        </p>
+        <button
+          type="button"
+          onClick={() => {
+            window.location.href =
+              import.meta.env.VITE_BONUS_CONTENT_PAY_URL;
+          }}
+        >
+          קנה את זה עכשיו!
+        </button>
+      </Modal> 
     </>
   );
 };
