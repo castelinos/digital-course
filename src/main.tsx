@@ -12,6 +12,9 @@ import { ResponsiveProvider } from "./context/PlatformContext.tsx";
 import Lessons from "./pages/Lessons.tsx";
 import OrderSuccess from "./pages/OrderSuccess.tsx";
 
+import Users from "./pages/admin-dashboard/Users.tsx";
+import DashboardLayout from "./components/layouts/DashboardLayout.tsx";
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -48,6 +51,20 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
               }
             />
             <Route path="/:order/order-success" element={<OrderSuccess />} />
+
+            {/* Admin routes */}
+            
+            <Route element={<DashboardLayout />}>
+              <Route
+                path="/admin"
+                element={
+                  <ProtectedRoute level="admin">
+                    <Users />
+                  </ProtectedRoute>
+                }
+              />
+            </Route>
+
           </Routes>
         </AuthProvider>
       </ResponsiveProvider>
