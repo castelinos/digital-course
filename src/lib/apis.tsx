@@ -1,3 +1,5 @@
+import { PAGE_COUNT } from "./constants";
+
 interface LoginAPIProps{
     username:string;
     password:string;
@@ -10,6 +12,12 @@ interface OrderProps {
   paymentID: string;
   contact?: string;
   name?: string;
+}
+
+interface getUsersProps{
+  searchTerm: string;
+  page: number;
+  sort: 'asc' | 'desc';
 }
 
 export async function getCustomerData( customerID: string ) {
@@ -137,6 +145,36 @@ export async function getUserOrders( email: string ) {
   try {
     const response = await fetch(
       `${import.meta.env.VITE_APP_API_URL}/orders/?username=${email}`,
+      {
+        method: "GET",
+        headers: { "Content-Type": "application/json" }
+      }
+    );
+
+    const data = await response.json();
+
+    if (response.ok) {
+      return { status: "success", data: data };
+    } else {
+      throw new Error(data.message || "An error occurred");
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
+    return { status: "error", message: error.message };
+  }
+}
+
+export async function getUsers({ searchTerm, page, sort }: getUsersProps) {
+  try {
+    const pageSize = PAGE_COUNT.toString();
+    const url = new URL(`${import.meta.env.VITE_APP_API_URL}/users`);
+
+    if( searchTerm ) url.searchParams.append("username", searchTerm.trim());
+    if( page ) url.searchParams.append("page", page.toString());
+    if( sort ) url.searchParams.append("sort", sort);
+    url.searchParams.append("limit",pageSize);
+
+    const response = await fetch(url,
       {
         method: "GET",
         headers: { "Content-Type": "application/json" }

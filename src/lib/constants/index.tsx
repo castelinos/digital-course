@@ -8,3 +8,5 @@ export const ordersList = [
     orderName: "BONUS_CONTENT",
   },
 ];
+
+export const PAGE_COUNT = 8;
